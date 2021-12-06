@@ -1,7 +1,17 @@
+import { useEffect, useState } from 'react';
 import { ProfileCard } from './ui-components';
+import liff from '@line/liff'
 import './App.css';
 
 function App() {
+  useEffect(() => {
+    if (!liff.isLoggedIn) {
+      liff.init({liffId: process.env.REACT_APP_LIFF_ID}).then(async () => {
+        const profile = await liff.getProfile();
+        console.log(profile);
+      });
+    }
+  }, [])
   return (
     <div className="App">
       <ProfileCard overrides={{
