@@ -5,24 +5,36 @@ import './App.css';
 
 function App() {
   useEffect(() => {
-    if (!liff.isLoggedIn) {
-      liff.init({liffId: process.env.REACT_APP_LIFF_ID}).then(async () => {
-        const profile = await liff.getProfile();
-        console.log(profile);
+    liff.init({ liffId: process.env.REACT_APP_LIFF_ID }).then(async () => {
+      if (!liff.isLoggedIn()) {
+        await liff.login();
+      }
+      const profile = await liff.getProfile();
+      setProfile({
+        avatorImageSrc: profile.pictureUrl,
+        userName: profile.displayName,
       });
-    }
+    }).catch((error) => {
+      console.error(error);
+    });
   }, [])
+  const [profile, setProfile] = useState({
+    avatorImageSrc: '',
+    userName: '',
+  })
   return (
     <div className="App">
       <ProfileCard overrides={{
         "View.Image[0]": {
-          src: "https://pbs.twimg.com/profile_banners/2879298302/1611912105/1500x500",
+          alt: '背景',
+          src: "https://cdn.pixabay.com/photo/2021/11/27/12/16/mountain-6827881_960_720.jpg",
         },
         "View.Image[1]": {
-          src: "https://pbs.twimg.com/profile_images/1303683778179510272/qd5TvqMZ_400x400.jpg",
+          alt: 'アバター',
+          src: profile.avatorImageSrc,
         },
         "View.Text[0]": {
-          children: 'user name',
+          children: profile.userName,
         },
         "View.Text[1]": {
           children: 'user profile',
