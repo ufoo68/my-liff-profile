@@ -20,7 +20,7 @@ function App() {
   }, [])
   const [profile, setProfile] = useState({
     avatorImageSrc: '',
-    userName: '',
+    userName: 'user name',
   })
   return (
     <div className="App">
