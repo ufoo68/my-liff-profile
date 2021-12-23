@@ -13,8 +13,6 @@ function App() {
       }
       const profile = await liff.getProfile();
       const profiles = await DataStore.query(Profile);
-      console.log(profiles);
-      console.log(profile.userId);
       const { bio, background_image } = profiles.find((value) => value.liff_id === profile.userId);
       setProfile({
         avatorImageSrc: profile.pictureUrl,
