@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { ProfileCard } from './ui-components';
-import liff from '@line/liff'
+import liff from '@line/liff';
 import './App.css';
 import { Profile } from './models';
-import Amplify, { DataStore } from 'aws-amplify'
+import Amplify, { DataStore } from 'aws-amplify';
 import awsconfig from "./aws-exports";
 
 Amplify.configure(awsconfig);
@@ -16,6 +16,7 @@ function App() {
       }
       const profile = await liff.getProfile();
       const profiles = await DataStore.query(Profile);
+      console.log(profiles);
       const { bio, background_image } = profiles.find((value) => value.liff_id === profile.userId);
       setProfile({
         avatorImageSrc: profile.pictureUrl,
