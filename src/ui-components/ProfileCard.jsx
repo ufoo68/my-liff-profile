@@ -31,11 +31,12 @@ export default function ProfileCard(props) {
         {...getOverrideProps(overrides, "View.View[0]")}
       ></View>
       <Image
-        width="336px"
         padding="0px 0px 0px 0px"
-        position="absolute"
         top="0px"
         left="0px"
+        src={ProfileCard?.background_image}
+        width="336px"
+        position="absolute"
         height="200px"
         {...getOverrideProps(overrides, "View.Image[0]")}
       ></Image>
@@ -84,7 +85,7 @@ export default function ProfileCard(props) {
         fontWeight="400"
         direction="column"
         height="54px"
-        children="ぷろふぃーる"
+        children={ProfileCard?.bio}
         {...getOverrideProps(overrides, "View.Text[1]")}
       ></Text>
     </View>

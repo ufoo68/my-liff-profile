@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { ProfileCard } from './ui-components';
 import liff from '@line/liff'
 import './App.css';
+import { Profile } from './models';
+import { DataStore } from 'aws-amplify'
 
 function App() {
   useEffect(() => {
@@ -10,6 +12,8 @@ function App() {
         await liff.login();
       }
       const profile = await liff.getProfile();
+      const profiles = await DataStore.query(Profile)
+      console.log(profiles)
       setProfile({
         avatorImageSrc: profile.pictureUrl,
         userName: profile.displayName,
@@ -21,23 +25,18 @@ function App() {
   const [profile, setProfile] = useState({
     avatorImageSrc: '',
     userName: 'user name',
-  })
+    bio: 'user profile',
+    backgroundImage: ''
+  });
   return (
     <div className="App">
-      <ProfileCard overrides={{
-        "View.Image[0]": {
-          alt: '背景',
-          src: "https://cdn.pixabay.com/photo/2021/11/27/12/16/mountain-6827881_960_720.jpg",
-        },
+      <ProfileCard ProfileCard={{bio: profile.bio, background_image: profile.backgroundImage}} overrides={{
         "View.Image[1]": {
           alt: 'アバター',
           src: profile.avatorImageSrc,
         },
         "View.Text[0]": {
           children: profile.userName,
-        },
-        "View.Text[1]": {
-          children: 'user profile',
         },
       }} />
     </div>
