@@ -1,9 +1,1 @@
-export type AmplifyDependentResourcesAttributes = {
-    "api": {
-        "myliffprofile": {
-            "GraphQLAPIKeyOutput": "string",
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
-        }
-    }
-}
+export type AmplifyDependentResourcesAttributes = {}
