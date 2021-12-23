@@ -1,0 +1,6 @@
+type Profile @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  liff_id: String
+  background_image: String
+  bio: String
+}

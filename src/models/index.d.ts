@@ -11,8 +11,8 @@ type ProfileMetaData = {
 export declare class Profile {
   readonly id: string;
   readonly liff_id?: string;
-  readonly bio?: string;
   readonly background_image?: string;
+  readonly bio?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Profile, ProfileMetaData>);

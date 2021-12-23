@@ -17,15 +17,15 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "bio": {
-                    "name": "bio",
+                "background_image": {
+                    "name": "background_image",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "background_image": {
-                    "name": "background_image",
+                "bio": {
+                    "name": "bio",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
